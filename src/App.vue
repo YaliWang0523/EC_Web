@@ -16,5 +16,4 @@ export default {
   name: 'app'
 }
 </script>
-
 <style lang="scss" src="./assets/bootstrap/bootstrap.scss"/>

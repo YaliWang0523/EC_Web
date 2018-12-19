@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+    <!-- Favicon -->
+    <link href="./src/assets/img/brand/favicon.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link href="./src/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="./src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="./src/assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Sidenav -->
+    <!-- Main content -->
+    <div class="main-content">
+      <!-- Top navbar -->
+      <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="fas fa-broom"></i>潔屋大師
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-default">
+            <div class="navbar-collapse-header">
+              <div class="row">
+                <div class="col-6 collapse-brand">
+                  <a href="../../index.html">
+                    <img src="../../assets/img/brand/blue.png">
+                  </a>
+                </div>
+                <div class="col-6 collapse-close">
+                  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <ul class="navbar-nav ml-lg-auto">
+              <li class="nav-item">
+                <a class="nav-link nav-link-icon" href="#">
+                  <i class="fas fa-user"></i>
+                  <span class="nav-link-inner--text ">登出</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- /Top navbar -->
+      <!-- Main page -->
+      <div class="container">
+        <!-- Head -->
+        <div class="row mt-3">
+          <div class="col">
+            <h1 class="float-left text-primary">案件明細912730</h1>
+          </div>
+          <div class="col text-right">
+            <a class="btn btn-primary ml-3" href="#" role="button">列印</a>
+          </div>
+        </div>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Sub Head -->
+        <div class="row mt-3">
+          Step
+        </div>
+        <!-- /Sub Head -->
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Page content -->
+        <!-- Tab Row -->
+        <div class="row mt-3">
+          <div class="col">
+            <!-- Card -->
+            <div class="card shadow">
+              <!-- Card Body -->
+              <div class="card-body">
+                <!-- Tab Buttons -->
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">案件明細</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">派工單位</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">驗收結案</a>
+                  </div>
+                </nav>
+                <!-- /Tab Buttons -->
+                <!-- Tab Content -->
+                <div class="tab-content" id="nav-tabContent">
+                  <!-- /Tab1 -->
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <!-- Form -->
+                    <form>
+                      <h2>業主資料</h2>
+                      <!-- Form Row -->
+                      <div class="form-row">
+                        <!-- 預約業主 -->
+                        <label for="inputName">預約業主</label>
+                        <div class="form-group col-4 form-check-inline">
+                          <input type="text" class="form-control" id="inputName">
+                        </div>
+                        <!-- /預約業主 -->
+                        <!-- 聯絡電話 -->
+                        <div class="form-group col-4">
+                          <label for="inputTel">聯絡電話</label>
+                          <input type="tel" class="form-control form-check-inline" id="inputTel">
+                        </div>
+                        <!-- /聯絡電話 -->
+                        <!-- Email -->
+                        <div class="form-group col-4">
+                          <label for="inputEmail">Email</label>
+                          <input type="email" class="form-control form-check-inline" id="inputEmail">
+                        </div>
+                        <!-- /Email -->
+                        <!-- 施做地址 -->
+                        <div class="form-group col-8">
+                          <label for="inputAddr">施做地址</label>
+                          <input type="text" class="form-control" id="inputAddr">
+                        </div>
+                        <!-- /施做地址 -->
+                      </div>
+                      <!-- Form Row -->
+                      <!-- Divider -->
+                      <hr class="my-3">
+                    </form>
+                    <!-- /Form -->
+                    <!-- Form -->
+                    <form>
+                      <h2>服務內容</h2>
+                      <!-- Form Row -->
+                      <div class="form-row">
+                        <!-- Form Group 預約類型 -->
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect2">預約類型</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">居家清潔</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">冷氣清洗</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">水管淨化</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">洗衣機清洗</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">專業除蟎</label>
+                          </div>
+                        </div>
+                        <!-- /Form Group 預約類型 -->
+                      </div>
+                      <!-- /Form Row -->
+                      <!-- Form Row -->
+                      <div class="form-row">
+                        <!-- Form Group -->
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect2">服務內容</label>
+                          <div class="form-check form-check-inline">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>2位清潔管家</option>
+                              <option>3位清潔管家</option>
+                              <option>4位清潔管家<</option>
+                              <option>5位清潔管家<</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- /Form Group -->
+                      </div>
+                      <!-- /Form Row -->
+                    </form>
+                    <!-- /Form -->
+                  </div>
+                  <!-- /Tab1 -->
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                </div>
+                <!-- /Tab Content -->
+              </div>
+              <!-- /Card Body -->
+            </div>
+            <!-- /Card -->
+          </div>
+          <!-- Tab -->
+        </div>
+        <!-- Col -->
+      </div>
+      <!-- Tab Row -->
+    </div>
+    <!-- Main content -->
+  </div>
+  <!-- /Main page -->
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="./src/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./src/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Optional JS -->
+  <script src="./src/assets/vendor/clipboard/dist/clipboard.min.js"></script>
+  <!-- Argon JS -->
+  <script src="./src/assets/js/argon.js?v=1.0.0"></script>
+</body>
+</html>
