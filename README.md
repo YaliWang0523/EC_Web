@@ -1,6 +1,6 @@
-# pulo
+# ec_web
 
-> pulo_web
+> ec_web
 
 ## Build Setup
 
