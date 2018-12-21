@@ -4,7 +4,7 @@ import {CommonToken} from '@/common/CommonToken.js'
 import $ from 'jquery'
 
 const Error404 = () => import('@/components/Error/Error404')
-const MyBillList = () => import('@/components/Dbs/MyBillList')
+const Detail = () => import('@/components/master_of_cleaning/detail')
 const Home = () => import('@/components/Home')
 
 Vue.use(Router)
@@ -14,7 +14,7 @@ const router = new Router({
     { path: '/', component: Home }, // 根目錄
     // { path: '/about_pulo', name: 'about_pulo', component: AboutPULO }, // 關於PULO
     { path: '/error_404', name: 'error_404', component: Error404 }, // 404Error
-    {path: '/mybilllist', name: 'mybilllist', component: MyBillList},
+    {path: '/detail', name: 'detail', component: Detail},
     { path: '*', component: Error404 }
   ]}
 )

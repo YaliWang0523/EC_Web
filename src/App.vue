@@ -1,6 +1,6 @@
 <template lang="jade">
 	div
-		common-navigation
+		//- common-navigation
 		login-modal
 		router-view
 		common-footer
@@ -8,12 +8,13 @@
 
 <script>
 import CommonFooter from '@/components/Footer'
-import CommonNavigation from '@/components/Navigation'
+// import CommonNavigation from '@/components/Navigation'
 import LoginModal from '@/components/Modal/Login/LoginModal'
 
 export default {
-  components: { CommonFooter, CommonNavigation, LoginModal },
+  components: { CommonFooter, LoginModal },
   name: 'app'
+  // CommonNavigation
 }
 </script>
-<style lang="scss" src="./assets/bootstrap/bootstrap.scss"/>
+<!-- <style lang="scss" src="./assets/bootstrap/bootstrap.scss"/> -->

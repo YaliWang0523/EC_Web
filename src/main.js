@@ -10,7 +10,7 @@ import store from './store'
 import retina from 'retinajs'
 import VueRetina from 'vue-retina'
 
-require('./assets/js/bootstrap.js')
+// require('./assets/js/bootstrap.js')
 // require('./assets/commonJS/Mixpanel.js')
 // require('./assets/commonJS/Intercom.js')
 // require('./assets/commonJS/retina.min.js')
