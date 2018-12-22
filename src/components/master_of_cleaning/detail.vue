@@ -164,25 +164,9 @@
                       <!-- Form Group 預約類型 -->
                       <div class="form-group col-12">
                         <label class="font-weight-bold mr-2">預約類型</label>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService1" value="option1">
-                          <label class="form-check-label" for="rdoSelectService1">居家清潔</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService2" value="option2">
-                          <label class="form-check-label" for="rdoSelectService2">冷氣清洗</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService3" value="option2">
-                          <label class="form-check-label" for="rdoSelectService3">水管淨化</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService4" value="option2">
-                          <label class="form-check-label" for="rdoSelectService4">洗衣機清洗</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService5" value="option2">
-                          <label class="form-check-label" for="rdoFormControlSelectService5">專業除蟎</label>
+                        <div class="form-check form-check-inline" v-for="(item, index) of this.project_type_name">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" :id="item" v-model="select_project_type" :value = "project_type[index]">
+                          <label class="form-check-label" for="rdoSelectService1">{{item}}</label>
                         </div>
                       </div>
                       <!-- /Form Group 預約類型 -->
@@ -204,43 +188,19 @@
                       <!-- /Form Group 聯絡電話-->
                       <!-- Form Group 服務時段 -->
                       <div class="form-group col-12">
-                        <label class="font-weight-bold mr-2服務時段">服務時段</label>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectTime1" value="option1">
-                          <label class="form-check-label" for="rdoSelectTime1">平日上午</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectTime2" value="option2">
-                          <label class="form-check-label" for="rdoSelectTime2">平日下午</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectTime3" value="option2">
-                          <label class="form-check-label" for="rdoSelectTime3">週六上午</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectTime4" value="option2">
-                          <label class="form-check-label" for="rdoSelectTime4">週六下午</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectTime5" value="option2">
-                          <label class="form-check-label" for="rdoSelectTime5">以上時段皆可</label>
+                        <label class="font-weight-bold mr-2">服務時段</label>
+                        <div class="form-check form-check-inline" v-for="(item, index) of this.time_type_name">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" :id="item" v-model="select_time_type" :value = "time_type[index]">
+                          <label class="form-check-label" for="rdoSelectTime1">{{item}}</label>
                         </div>
                       </div>
                       <!-- /Form Group 服務時段 -->
                       <!-- Form Group 發票類型 -->
                       <div class="form-group col-12">
                         <label class="font-weight-bold mr-2">發票類型</label>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectReceipt1" value="option1">
-                          <label class="form-check-label" for="rdolSelectReceipt1">二聯發票</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectReceipt2" value="option2">
-                          <label class="form-check-label" for="rdoSelectReceipt2">三聯發票</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectReceipt3" value="option2">
-                          <label class="form-check-label" for="rdoSelectReceipt3">載具發票</label>
+                        <div class="form-check form-check-inline" v-for="(item, index) of this.invoice_name">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" :id="item" v-model="select_invoice" :value = "invoice[index]">
+                          <label class="form-check-label" for="rdolSelectReceipt1">{{item}}</label>
                         </div>
                       </div>
                       <!-- /Form Group 發票類型 -->
@@ -268,25 +228,9 @@
                       <!-- Form Group 服務類型 -->
                       <div class="form-group col-12">
                         <label class="font-weight-bold mr-2">服務類型</label>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService1" value="option1">
-                          <label class="form-check-label" for="rdoSelectService1">居家清潔</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService2" value="option2">
-                          <label class="form-check-label" for="rdoSelectService2">冷氣清洗</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService3" value="option2">
-                          <label class="form-check-label" for="rdoSelectService3">水管淨化</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService4" value="option2">
-                          <label class="form-check-label" for="rdoFormControlSelectService4">洗衣機清洗</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSelectService5" value="option2">
-                          <label class="form-check-label" for="rdoSelectService5">專業除蟎</label>
+                        <div class="form-check form-check-inline" v-for="(item, index) of this.project_type_name">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" :id="item" v-model="select_project_type" :value = "project_type[index]">
+                          <label class="form-check-label" for="rdoSelectService1">{{item}}</label>
                         </div>
                       </div>
                       <!-- /Form Group 服務類型 -->
@@ -351,27 +295,11 @@
                     <!-- Form Row -->
                     <div class="form-row">
                       <!-- Form Group 滿意度 -->
-                      <div class="form-group col-12">
-                        <label class="font-weight-bold mr-2">滿意度</label>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSatisfaction5" value="option1">
-                          <label class="form-check-label" for="rdoSatisfaction5">非常滿意</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSatisfaction4" value="option2">
-                          <label class="form-check-label" for="rdoSatisfaction4">滿意</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSatisfaction3" value="option2">
-                          <label class="form-check-label" for="rdoSatisfaction3">普通</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSatisfaction2" value="option2">
-                          <label class="form-check-label" for="rdoSatisfaction2">不滿意</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rdoSatisfaction1" value="option2">
-                          <label class="form-check-label" for="rdoSatisfaction1">非常不滿意</label>
+                      <div class="form-group col-12" >
+                        <label class="font-weight-bold mr-2" >滿意度</label>
+                        <div class="form-check form-check-inline" v-for="(item, index) of this.review_name">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" :id="item" v-model="select_review" :value = "review[index]">
+                          <label class="form-check-label" for="rdoSatisfaction5">{{item}}</label>
                         </div>
                       </div>
                       <!-- /Form Group 滿意度 -->
@@ -433,6 +361,25 @@
 
 export default {
   name: 'Detail',
+  data () {
+    return {
+      loading: false,
+      datas: [],
+      errors: [],
+      invoice_name: ['二聯發票', '三聯發票', '載具發票'],
+      invoice: ['1000', '1001', '1003'],
+      select_invoice: '',
+      time_type_name: ['平日上午', '平日下午', '週六上午', '週六下午', '以上時段皆可'],
+      time_type: ['1000', '1001', '1002', '1003', '1004'],
+      select_time_type: '',
+      project_type_name: ['居家清潔', '專業除蟎', '水管淨化', '冷氣機清洗', '洗衣機清洗'],
+      project_type: ['1000', '1001', '1002', '1004', '1005'],
+      select_project_type: '',
+      review_name: ['非常滿意', '滿意', '普通', '不滿意', '非常不滿意'],
+      review: ['1000', '1001', '1002', '1003', '1004'],
+      select_review: ''
+    }
+  },
   methods: {
   }
 }

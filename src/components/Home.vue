@@ -63,7 +63,7 @@
               </a>
               <form class="dropdown-menu p-4">
                 <div class="form-check mb-2" v-for="(item, index) of this.project_type_name">
-                  <input type="checkbox" class="form-check-input" :id="item" v-model="select_project_type" :value = "project_type[index]">
+                  <input type="checkbox" name="inlineRadioOptions" class="form-check-input" :id="item" v-model="select_project_type" :value = "project_type[index]">
                   <label class="form-check-label" for="dropdownCheck1">
                     {{item}}
                   </label>
