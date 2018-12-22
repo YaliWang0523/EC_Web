@@ -46,9 +46,9 @@
           <div class="col">
             <h1 class="float-left text-primary">案件列表</h1>
           </div>
-          <div class="col text-right">
+          <!-- <div class="col text-right">
             <a class="btn btn-primary ml-3" href="#" role="button">新增預約案件</a>
-          </div>
+          </div> -->
         </div>
         <!-- Divider -->
         <hr class="my-3">
@@ -62,16 +62,10 @@
                 案件類型
               </a>
               <form class="dropdown-menu p-4">
-                <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck1">
+                <div class="form-check mb-2" v-for="(item, index) of this.project_type_name">
+                  <input type="checkbox" class="form-check-input" :id="item" v-model="select_project_type" :value = "project_type[index]">
                   <label class="form-check-label" for="dropdownCheck1">
-                    居家清潔
-                  </label>
-                </div>
-                <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                  <label class="form-check-label" for="dropdownCheck2">
-                    居家清潔
+                    {{item}}
                   </label>
                 </div>
               </form>
@@ -83,29 +77,17 @@
                 案件狀態
               </a>
               <form class="dropdown-menu p-4">
-                <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck1">
+                <div class="form-check mb-2" v-for="(item, index) of this.project_status_name" >
+                  <input type="checkbox" :id="item" class="form-check-input" v-model="select_project_status" :value = "project_status[index]">
                   <label class="form-check-label" for="dropdownCheck1">
-                    已預約
-                  </label>
-                </div>
-                <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                  <label class="form-check-label" for="dropdownCheck2">
-                    已派工
-                  </label>
-                </div>
-                <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                  <label class="form-check-label" for="dropdownCheck2">
-                    已結案
+                    {{item}}
                   </label>
                 </div>
               </form>
             </div>
             <!-- /案件狀態 -->
             <!-- 預約月份-->
-            <div class="btn-group mr-3">
+            <!-- <div class="btn-group mr-3">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 預約日期
               </a>
@@ -127,10 +109,10 @@
                   </select>
                 </div>
               </form>
-            </div>
+            </div> -->
             <!-- /預約月份 -->
             <!-- 派工月份-->
-            <div class="btn-group">
+           <!--  <div class="btn-group">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 派工日期
               </a>
@@ -152,14 +134,14 @@
                   </select>
                 </div>
               </form>
-            </div>
+            </div> -->
             <!-- /派工月份 -->
           </div>
           <!-- /Filter -->
           <!-- Pagination -->
           <nav aria-label="Page navigation">
             <ul class="pagination align-items-center">
-              <strong class="mr-1">案件 1-20 共 36 件</strong>
+              <strong class="mr-1">案件 1-{{datas.length}} 共 {{datas.length}} 件</strong>
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                   <i class="fa fa-angle-left"></i>
@@ -198,30 +180,33 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr v-for="item of this.datas">
                       <th scope="row">
                         <div class="align-items-center">
                         	<router-link to="/detail">
   								<a>
-  									<span class="mb-0 text-sm text-primary">蔡依林</span>
+  									<span class="mb-0 text-sm text-primary">{{item.memberName}}</span>
   								</a>
 							</router-link>
                           
                         </div>
                       </th>
                       <td>
-                        居家清潔
+                        {{item.typeName}}
                       </td>
                       <td>
-                        <span class="badge badge-dot mr-4">
-                          <i class="bg-primary"></i> 已結案
+                        <span class="badge badge-dot mr-4" >
+                          <i class="bg-warning" v-if="item.status === '1000'"></i> 
+                          <i class="bg-success" v-else-if="item.status === '1001'"></i>
+                          <i class="bg-primary" v-else></i>
+                          {{item.statusName}}
                         </span>
                       </td>
                       <td>
-                        2018/12/12
+                        {{formatDate(item.createTime)}}
                       </td>
                       <td>
-                        2018/12/14
+                        <!--todo 派工日期-->
                       </td>
                       <td class="text-right">
                         <div class="dropdown">
@@ -250,9 +235,104 @@
   </div>
 </template>
 <script>
+import {ApiHandle} from '@/Api/ApiHandle.js'
+import {CommonFunction} from '@/common/CommonFunction.js'
 export default {
   name: 'Home',
+  data () {
+    return {
+      loading: false,
+      datas: [],
+      errors: [],
+      project_status_name: ['媒合中', '已派工', '結案'],
+      project_status: ['1000', '1001', '1003'],
+      select_project_status: ['1000'],
+      project_type_name: ['居家清潔', '專業除蟎', '水管淨化', '冷氣機清洗', '洗衣機清洗'],
+      project_type: ['1000', '1001', '1002', '1004', '1005'],
+      select_project_type: ['1000', '1001', '1002', '1004', '1005']
+    }
+  },
   methods: {
+    check_status () {
+
+    },
+    formatDate (date) {
+      let commonFunction = new CommonFunction()
+      let result = commonFunction.DateForamt(date)
+      return result
+    },
+    onHandle: function (data) {
+      this.datas = data
+      console.log(this.datas)
+    },
+    onError: function () {
+      this.datas = []
+    },
+    onTokenError: function () {
+      this.datas = []
+    },
+    getData: function () {
+      let commonFunction = new CommonFunction()
+      let url = commonFunction.GetApiUrl()
+      this.loading = true
+      var params = new URLSearchParams()
+      var pS = ''
+      for (let key in this.select_project_status) {
+        let value = this.select_project_status[key]
+        if (pS === '') {
+          pS = 'p.status = \'' + value + '\''
+        } else {
+          pS = pS + 'OR p.status = \'' + value + '\''
+        }
+      }
+      var pT = ''
+      for (let key in this.select_project_type) {
+        let value = this.select_project_type[key]
+        if (pT === '') {
+          pT = 'p.type = \'' + value + '\''
+        } else {
+          pT = pT + 'OR p.type = \'' + value + '\''
+        }
+      }
+      let con = ''
+      if (pS !== '') {
+        con = ' AND (' + pS + ')'
+      }
+      if (pT !== '') {
+        con = con + ' AND (' + pT + ')'
+      }
+      params.append('con', con)
+      console.log(con)
+      window.Vue.axios({
+        method: 'post',
+        url: url + 'Admin/Projects',
+        data: params
+      })
+      .then((response) => {
+      /* eslint-disable no-new */
+        console.log(response)
+        new ApiHandle(this.onHandle, this.onError, this.onTokenError, response.data, true, this)
+        this.loading = false
+      })
+      .catch(e => {
+        this.errors.push(e)
+        this.loading = false
+        // Error404
+        let commonFunction = new CommonFunction()
+        commonFunction.ToError404(this)
+      })
+    }
+  },
+  created () {
+    this.getData()
+  },
+  watch: {
+    'select_project_status' () {
+      this.getData()
+    },
+    'select_project_type' () {
+      this.getData()
+    }
   }
 }
 </script>
