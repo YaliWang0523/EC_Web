@@ -80,7 +80,7 @@
         </div>
         <!-- /預約 -->
         <!-- 派工 -->
-        <div class = 'ccol bs-wizard-step active' v-if="this.datas['status'] == '1001' ">
+        <div class = 'col bs-wizard-step active' v-if="this.datas['status'] == '1001' ">
           <div class="text-center bs-wizard-stepnum">派工</div>
           <div class="progress">
             <div class="progress-bar"></div>
@@ -96,7 +96,7 @@
         </div>
         <!-- /派工 -->
         <!-- 施做 -->
-        <div class = 'ccol bs-wizard-step active' v-if="this.datas['status'] == '1002' ">
+        <div class = 'col bs-wizard-step active' v-if="this.datas['status'] == '1002' ">
           <div class="text-center bs-wizard-stepnum">施做</div>
           <div class="progress">
             <div class="progress-bar"></div>
@@ -113,7 +113,7 @@
         </div>
         <!-- /施做 -->
         <!-- 結案 -->
-        <div class = 'ccol bs-wizard-step active' v-if="this.datas['status'] == '1004' ">
+        <div class = 'col bs-wizard-step active' v-if="this.datas['status'] == '1004' ">
           <div class="text-center bs-wizard-stepnum">結案</div>
           <div class="progress">
             <div class="progress-bar"></div>
