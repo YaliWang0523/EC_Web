@@ -270,30 +270,34 @@
                       <!-- Form Group 服務單位-->
                       <div class="form-group col-4">
                         <label for="selectProCompany" class="font-weight-bold">服務單位</label>
-                        <select v-model="selectVendor" class="form-control" id="selectProCompany">
+                        <select v-model="selectVendor" class="form-control" id="selectProCompany" v-if="this.datas['status'] < '1001'">
                           <option value= ""> 請選擇 </option>
                           <option  v-for="(temp, index) of this.s_v[0]" :value= "index">{{temp.vendorName}}</option>
                         </select>
+                        <input v-else type="text" class="form-control" id="inputProTel" placeholder="0978-578-978" :value = "this.datas['vname']">
                       </div>
                       <!-- /Form Group 服務單位-->
                       <div class="form-group col-4">
                         <label for="inputProName" class="font-weight-bold">服務員</label>
-                        <select class="form-control" id="selectProPeople" v-model="selectP">
+                        <select class="form-control" id="selectProPeople" v-model="selectP" v-if="this.datas['status'] < '1001'">
                           <option value= ""> 請選擇 </option>
                           <option v-for="(temp, index) of this.p_v" :value= "index">{{temp.vpname}}</option>
                         </select>
+                        <input v-else type="text" class="form-control" id="inputProTel" placeholder="" :value = "this.datas['vpname']">
                         <!-- <input type="text" class="form-control" id="inputProName" placeholder="陳大姐"> -->
                       </div>
                       <!-- Form Group 聯絡電話 -->
                       <div class="form-group col-4">
                         <label for="inputProTel" class="font-weight-bold">聯絡電話</label>
-                        <input type="text" class="form-control" id="inputProTel" placeholder="0978-578-978" :value = "this.selectP_mobile">
+                        <input type="text" class="form-control" id="inputProTel" placeholder="0978-578-978" :value = "this.selectP_mobile" v-if="this.datas['status'] < '1001'">
+                        <input v-else type="text" class="form-control" id="inputProTel" placeholder="" :value = "this.datas['vpmobile']">
                       </div>
                       <!-- /Form Group 聯絡電話 -->
                       <!-- Form Group Email -->
                       <div class="form-group col-4">
                         <label for="inputProEmail" class="font-weight-bold">Email</label>
-                        <input type="text" class="form-control" id="inputProEmail" placeholder="abc@gmail.com" :value = "this.selectP_email">
+                        <input type="text" class="form-control" id="inputProEmail" placeholder="abc@gmail.com" :value = "this.selectP_email" v-if="this.datas['status'] < '1001'">
+                        <input v-else type="text" class="form-control" id="inputProTel" placeholder="" :value = "this.datas['vpemail']">
                       </div>
                       <!-- /Form Group Email -->
                     </div>
@@ -330,7 +334,7 @@
                       <!-- /Form Group 滿意度 -->
                       <div class="form-group col-8">
                         <label for="textareaFeedback" class="font-weight-bold">意見回饋</label>
-                        <textarea class="form-control" id="textareaFeedback" rows="3" v-model="this.review_desc"></textarea>
+                        <textarea class="form-control" id="textareaFeedback" rows="3" v-model="review_desc"></textarea>
                       </div>
                     </div>
                     <!-- /Form Row -->
@@ -427,15 +431,19 @@ export default {
     },
     onHandle: function (data) {
       this.datas = data[0]
-      this.select_project_type = this.datas['type']
-      this.select_time_type = this.datas['time_type']
-      this.select_invoice = this.datas['invoice_type']
       for (var i = 0; i < this.vendor_data.length; i++) {
         if (this.vendor_data[i]['item'] === this.datas['type']) {
           this.s_v = []
           this.s_v.push(this.vendor_data[i])
           break
         }
+      }
+      this.select_project_type = this.datas['type']
+      this.select_time_type = this.datas['time_type']
+      this.select_invoice = this.datas['invoice_type']
+      if (this.datas['status'] === '1003') {
+        this.review_desc = this.datas['cdesc']
+        this.select_review = this.datas['star']
       }
       // TODO review
       // this.select_review = this.datas['']
@@ -484,6 +492,7 @@ export default {
             p['vpname'] = temp['vpname']
             p['mobile'] = temp['mobile']
             p['email'] = temp['email']
+            p['vpid'] = temp['vpid']
             v.push(p)
           } else {
             v['vendorId'] = temp['VendorId']
@@ -491,6 +500,7 @@ export default {
             p['vpname'] = temp['vpname']
             p['mobile'] = temp['mobile']
             p['email'] = temp['email']
+            p['vpid'] = temp['vpid']
             v.push(p)
             item.push(v)
             v = []
@@ -502,6 +512,7 @@ export default {
           p['vpname'] = temp['vpname']
           p['mobile'] = temp['mobile']
           p['email'] = temp['email']
+          p['vpid'] = temp['vpid']
           v.push(p)
           item.push(v)
           v = []
@@ -589,7 +600,7 @@ export default {
       this.loading = true
       var params = new URLSearchParams()
       params.append('pid', this.pid)
-      params.append('review', '1000')
+      params.append('review', this.select_review)
       params.append('desc', this.review_desc)
       window.Vue.axios({
         method: 'post',
