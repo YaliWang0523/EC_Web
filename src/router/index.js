@@ -14,7 +14,7 @@ const router = new Router({
     { path: '/', component: Home }, // 根目錄
     // { path: '/about_pulo', name: 'about_pulo', component: AboutPULO }, // 關於PULO
     { path: '/error_404', name: 'error_404', component: Error404 }, // 404Error
-    {path: '/detail', name: 'detail', component: Detail},
+    {path: '/detail/:info', name: 'detail', component: Detail},
     { path: '*', component: Error404 }
   ]}
 )

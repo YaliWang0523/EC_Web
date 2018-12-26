@@ -183,7 +183,7 @@
                     <tr v-for="item of this.datas">
                       <th scope="row">
                         <div class="align-items-center">
-                        	<router-link to="/detail">
+                        	<router-link :to="{path: '/detail/' + item.pid}">
   								<a>
   									<span class="mb-0 text-sm text-primary">{{item.memberName}}</span>
   								</a>
@@ -244,8 +244,8 @@ export default {
       loading: false,
       datas: [],
       errors: [],
-      project_status_name: ['媒合中', '已派工', '結案'],
-      project_status: ['1000', '1001', '1003'],
+      project_status_name: ['媒合中', '已派工', '施作', '結案'],
+      project_status: ['1000', '1001', '1002', '1003'],
       select_project_status: ['1000'],
       project_type_name: ['居家清潔', '專業除蟎', '水管淨化', '冷氣機清洗', '洗衣機清洗'],
       project_type: ['1000', '1001', '1002', '1004', '1005'],
@@ -263,7 +263,6 @@ export default {
     },
     onHandle: function (data) {
       this.datas = data
-      console.log(this.datas)
     },
     onError: function () {
       this.datas = []
@@ -302,7 +301,6 @@ export default {
         con = con + ' AND (' + pT + ')'
       }
       params.append('con', con)
-      console.log(con)
       window.Vue.axios({
         method: 'post',
         url: url + 'Admin/Projects',
@@ -310,7 +308,6 @@ export default {
       })
       .then((response) => {
       /* eslint-disable no-new */
-        console.log(response)
         new ApiHandle(this.onHandle, this.onError, this.onTokenError, response.data, true, this)
         this.loading = false
       })
