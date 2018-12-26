@@ -15,7 +15,7 @@ export class CommonFunction {
 
   GetApiUrl () {
     if (process.env.NODE_ENV === 'production') {
-      return ''
+      return 'http://218.161.115.117:1234/'
     } else {
       return '/data/'
     }

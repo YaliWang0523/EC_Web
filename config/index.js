@@ -32,8 +32,10 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/data': {                        // 自訂 local 端的位置
-            target: 'http://127.0.0.1:5000/',  // 遠端 URL Domain
+        '/data': {                  
+              // 自訂 local 端的位置
+              // target: 'http://218.161.115.117:1234/'
+            target: 'http://218.161.115.117:1234/',  // 遠端 URL Domain
             changeOrigin: true,
             pathRewrite: {
             '^/data': ''
