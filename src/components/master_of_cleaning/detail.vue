@@ -462,7 +462,7 @@ export default {
       params.append('pid', this.pid)
       window.Vue.axios({
         method: 'post',
-        url: url + 'Project/Detail',
+        url: url + 'Admin/Detail',
         data: params
       })
       .then((response) => {
