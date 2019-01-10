@@ -6,7 +6,7 @@
     <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
       	<a class="navbar-brand" href="#">
-          <img src="/static/assets/img/brand/LOGO-white.png" style="height:80px;">
+          <img src="static/assets/img/brand/LOGO-white.png" style="height:80px;">
       	</a>
       	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="../../index.html"> <!--todo 加連結-->
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
