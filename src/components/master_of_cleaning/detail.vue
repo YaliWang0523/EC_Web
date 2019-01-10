@@ -5,7 +5,7 @@
       <!-- Nav container -->
       <div class="container">
         <a class="navbar-brand" href="#">
-        <i class="fas fa-broom"></i>潔屋大師
+          <img src="/static/assets/img/brand/LOGO-white.png" style="height:80px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
